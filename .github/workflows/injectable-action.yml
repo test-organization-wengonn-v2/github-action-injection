@@ -3,8 +3,11 @@ on:
   issues:
     types: [opened]
 
+env:
+  DESCRIPTION: ${{github.event.issue.body}}
+
 jobs:
-  vuln_job:
+  basic_injection_1:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,3 +17,38 @@ jobs:
     - run: |
         echo "ISSUE TITLE: ${{github.event.issue.title}}"
         echo "ISSUE DESCRIPTION: ${{github.event.issue.body}}"
+  basic_injection_2:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout used for demonstration purposes
+    - uses: actions/checkout@v2
+    
+    - run: |
+        echo "ISSUE DESCRIPTION: ${{github.event.issue.body}}"
+
+  env_injection:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v2
+      - env:
+          TITLE: ${{github.event.issue.title}}
+          
+        run: |
+          echo "ISSUE TITLE: ${{ env.TITLE }}"
+          echo "ISSUE DESCRIPTION: ${{ env.DESCRIPTION }}"
+
+  patch_job_3:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout used for demonstration purposes
+    - uses: actions/checkout@v2
+    - env:
+        TITLE: ${{github.event.issue.title}}
+        DESCRIPTION: ${{github.event.issue.body}}
+          
+      run: |
+        echo "ISSUE TITLE: $TITLE"
+        echo "ISSUE DESCRIPTION: $DESCRIPTION"
