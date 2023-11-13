@@ -46,9 +46,9 @@ jobs:
     # Checkout used for demonstration purposes
     - uses: actions/checkout@v2
     - env:
-        TITLE: ${{github.event.issue.title}}
-        DESCRIPTION: ${{github.event.issue.body}}
+        ENVTITLE: ${{github.event.issue.title}}
+        ENVDESCRIPTION: ${{github.event.issue.body}}
           
       run: |
-        echo "ISSUE TITLE: $TITLE"
-        echo "ISSUE DESCRIPTION: $DESCRIPTION"
+        echo "ISSUE TITLE: $ENVTITLE"
+        echo "ISSUE DESCRIPTION: $ENVDESCRIPTION"
