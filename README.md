@@ -4,4 +4,5 @@
   ```
   `ls -la`
   ```
-2. `patch_job_1` is the fixed workflow
+2. Once a new issue is created, the github action workflow would be triggered 
+3. `patch_job_3` is the fixed workflow
