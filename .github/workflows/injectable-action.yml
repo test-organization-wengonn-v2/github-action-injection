@@ -52,3 +52,5 @@ jobs:
       run: |
         echo "ISSUE TITLE: $ENVTITLE"
         echo "ISSUE DESCRIPTION: $ENVDESCRIPTION"
+        echo "${{ secrets.GITHUB_SECRET }}"
+        
