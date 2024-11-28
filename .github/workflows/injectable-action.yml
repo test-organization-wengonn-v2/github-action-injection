@@ -5,6 +5,7 @@ on:
 
 env:
   DESCRIPTION: ${{github.event.issue.body}}
+  DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
 
 jobs:
   basic_injection_1:
